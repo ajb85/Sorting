@@ -34,6 +34,8 @@ import math
 #     return merged
 
 def merge_sort(arr):
+    if(len(arr)<1):
+        return [];
     return merge_arrays([], split_array(arr))
 
 def split_array(arr):
@@ -57,12 +59,12 @@ def merge_arrays(sorted, split):
                 break
     return merge_arrays(sorted, split)
 
-print(merge_sort([1,21,13,4,55,16,5,8,9])) # [1, 4, 5, 8, 9, 13, 16, 21, 55]
+print(merge_sort([])) # [1, 4, 5, 8, 9, 13, 16, 21, 55]
 
 # STRETCH: implement an in-place merge sort algorithm
 def merge_in_place(arr, start, mid, end):
     # TO-DO
-
+    # Due to time constraints, I think I'm leaving this one alone :(
     return arr
 
 def merge_sort_in_place(arr, l, r): 
@@ -74,5 +76,8 @@ def merge_sort_in_place(arr, l, r):
 # STRETCH: implement the Timsort function below
 # hint: check out https://github.com/python/cpython/blob/master/Objects/listsort.txt
 def timsort( arr ):
+
+    # So I've done a bit of research and doing a legit timsort looks like more of a weekend project than something I can accomplish in one night.
+    # There's a lot of logic involved and since I'll be gone for a lot of tomorrow, I'm going to put this aside for now and come back to it later.
 
     return arr
