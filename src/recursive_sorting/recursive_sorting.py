@@ -33,10 +33,20 @@ import math
     
 #     return merged
 
-def merge(sorted, split):
+def merge_sort(arr):
+    return merge_arrays([], split_array(arr))
+
+def split_array(arr):
+    if(len(arr)<=1):
+        return [arr]
+
+    half = math.ceil(len(arr)/2)
+    return split_array(arr[half:]) + split_array(arr[:half])
+
+def merge_arrays(sorted, split):
     if(len(split) == 0):
         return sorted
-        
+
     item = split.pop(0)[0] 
     if(len(sorted) == 0 or sorted[len(sorted)-1] <= item):
         sorted.append(item)
@@ -45,29 +55,9 @@ def merge(sorted, split):
             if sorted[i] >= item:
                 sorted.insert(i,item)
                 break
+    return merge_arrays(sorted, split)
 
-    return merge(sorted, split)
-    
-
-
-
-def split_array(arr):
-    if(len(arr)<=1):
-        return [arr]
-    half = math.ceil(len(arr)/2)
-
-    return split_array(arr[half:]) + split_array(arr[:half])
-
-
-
-# TO-DO: implement the Merge Sort function below USING RECURSION
-def merge_sort( arr ):
-    split = split_array(arr)
-    sorted = merge([], split)
-
-    return sorted
-
-print(merge_sort([1,21,13,4,55,16,5,8,9]))
+print(merge_sort([1,21,13,4,55,16,5,8,9])) # [1, 4, 5, 8, 9, 13, 16, 21, 55]
 
 # STRETCH: implement an in-place merge sort algorithm
 def merge_in_place(arr, start, mid, end):
